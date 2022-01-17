@@ -1,4 +1,91 @@
-## Welcome to GitHub Pages
+# VarietySound
+----
+
+## VarietySound : Timbre Controllable and Temporal Aligned Video-to-Sound Generation
+
+### Timbre Controllable Video to Sound Generation
+
+The current video-to-sound generation works share a common problem: all of their acoustic information comes from the model’s prediction and cannot control the timbre of the generated audio. To match this problem, we defined a task called Timbre Controllable Video to Sound Generation (TCVSG), whose target is to allow users to generate realistic sound effects with their desired timbre for silent videos.
+[Image](demo/imgs/task.png)
+we have a video clip V of an object breaking for movie production, but the natural recorded sounds are not impressive enough. So with this task, we can use an additional audio **A** with a more remarkable sound of breaking to generate an audio track for **V** . The generated audio **Aˆ** will be time-aligned with **V** , but has the same kind of sound as A which will make the video more exciting. As far as we know, we are the first to propose this task.
+
+### Generated Results
+<table>
+    <thead>
+        <th>Category</th>
+        <th>Reference Audio</th>
+        <th>Original Video</th>
+        <th>Video with Generated Audio</th>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Baby</th>
+            <td><audio controls style="width: 150px;"><source src="demo/audios/baby.wav" type="audio/wav"></audio></td>
+            <td><video width="100%" height="315" controls><source src="demo/videos/baby.mp4" type="video/mp4"></video></td>            
+            <td><video width="100%" height="315" controls><source src="demo/videos/baby_gen.mp4" type="video/mp4"></video></td>
+        </tr>
+    </tbody>
+    <tbody>
+      <tr>
+          <th>Cough</th>
+          <td><audio controls style="width: 150px;"><source src="demo/audios/baby.wav" type="audio/wav"></audio></td>
+          <td><video width="100%" height="315" controls><source src="demo/videos/baby.mp4" type="video/mp4"></video></td>            
+          <td><video width="100%" height="315" controls><source src="demo/videos/baby_gen.mp4" type="video/mp4"></video></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+          <th>Dog</th>
+          <td><audio controls style="width: 150px;"><source src="demo/audios/baby.wav" type="audio/wav"></audio></td>
+          <td><video width="100%" height="315" controls><source src="demo/videos/baby.mp4" type="video/mp4"></video></td>            
+          <td><video width="100%" height="315" controls><source src="demo/videos/baby_gen.mp4" type="video/mp4"></video></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+          <th>Drum</th>
+          <td><audio controls style="width: 150px;"><source src="demo/audios/baby.wav" type="audio/wav"></audio></td>
+          <td><video width="100%" height="315" controls><source src="demo/videos/baby.mp4" type="video/mp4"></video></td>            
+          <td><video width="100%" height="315" controls><source src="demo/videos/baby_gen.mp4" type="video/mp4"></video></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+          <th>Fireworks</th>
+          <td><audio controls style="width: 150px;"><source src="demo/audios/baby.wav" type="audio/wav"></audio></td>
+          <td><video width="100%" height="315" controls><source src="demo/videos/baby.mp4" type="video/mp4"></video></td>            
+          <td><video width="100%" height="315" controls><source src="demo/videos/baby_gen.mp4" type="video/mp4"></video></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+          <th>Gun</th>
+          <td><audio controls style="width: 150px;"><source src="demo/audios/baby.wav" type="audio/wav"></audio></td>
+          <td><video width="100%" height="315" controls><source src="demo/videos/baby.mp4" type="video/mp4"></video></td>            
+          <td><video width="100%" height="315" controls><source src="demo/videos/baby_gen.mp4" type="video/mp4"></video></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+          <th>Hammer</th>
+          <td><audio controls style="width: 150px;"><source src="demo/audios/baby.wav" type="audio/wav"></audio></td>
+          <td><video width="100%" height="315" controls><source src="demo/videos/baby.mp4" type="video/mp4"></video></td>            
+          <td><video width="100%" height="315" controls><source src="demo/videos/baby_gen.mp4" type="video/mp4"></video></td>
+      </tr>
+    </tbody>
+    <tbody>
+      <tr>
+          <th>Sneeze</th>
+          <td><audio controls style="width: 150px;"><source src="demo/audios/baby.wav" type="audio/wav"></audio></td>
+          <td><video width="100%" height="315" controls><source src="demo/videos/baby.mp4" type="video/mp4"></video></td>            
+          <td><video width="100%" height="315" controls><source src="demo/videos/baby_gen.mp4" type="video/mp4"></video></td>
+      </tr>
+    </tbody>
+</table>
+
+----
+
+<!-- ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/VarietySound/Anonymous1398/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
 
@@ -35,3 +122,4 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 ### Support or Contact
 
 Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+ -->
