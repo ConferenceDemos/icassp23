@@ -6,79 +6,79 @@
 ### Timbre Controllable Video to Sound Generation
 
 The current video-to-sound generation works share a common problem: all of their acoustic information comes from the model’s prediction and cannot control the timbre of the generated audio. To match this problem, we defined a task called Timbre Controllable Video to Sound Generation (TCVSG), whose target is to allow users to generate realistic sound effects with their desired timbre for silent videos.
-[Image](demo/imgs/task.png)
+[Existing Tasks & Proposed Task](demo/imgs/task.png)
 we have a video clip V of an object breaking for movie production, but the natural recorded sounds are not impressive enough. So with this task, we can use an additional audio **A** with a more remarkable sound of breaking to generate an audio track for **V** . The generated audio **Aˆ** will be time-aligned with **V** , but has the same kind of sound as A which will make the video more exciting. As far as we know, we are the first to propose this task.
 
 ### Generated Results
 <table>
     <thead>
         <th>Category</th>
-        <th>Reference Audio</th>
         <th>Original Video</th>
+        <th>Reference Audio</th>        
         <th>Video with Generated Audio</th>
     </thead>
     <tbody>
         <tr>
             <th>Baby</th>
-            <td><audio controls style="width: 150px;"><source src="demo/audios/baby.wav" type="audio/wav"></audio></td>
-            <td><video width="100%" height="315" controls><source src="demo/videos/baby.mp4" type="video/mp4"></video></td>            
+            <td><video width="100%" height="315" controls><source src="demo/videos/baby.mp4" type="video/mp4"></video></td>  
+            <td><audio controls style="width: 150px;"><source src="demo/audios/baby.wav" type="audio/wav"></audio></td>                      
             <td><video width="100%" height="315" controls><source src="demo/videos/baby_gen.mp4" type="video/mp4"></video></td>
         </tr>
     </tbody>
     <tbody>
       <tr>
           <th>Cough</th>
-          <td><audio controls style="width: 150px;"><source src="demo/audios/baby.wav" type="audio/wav"></audio></td>
-          <td><video width="100%" height="315" controls><source src="demo/videos/baby.mp4" type="video/mp4"></video></td>            
-          <td><video width="100%" height="315" controls><source src="demo/videos/baby_gen.mp4" type="video/mp4"></video></td>
+            <td><video width="100%" height="315" controls><source src="demo/videos/cough.mp4" type="video/mp4"></video></td>  
+            <td><audio controls style="width: 150px;"><source src="demo/audios/cough.wav" type="audio/wav"></audio></td>                      
+            <td><video width="100%" height="315" controls><source src="demo/videos/cough_gen.mp4" type="video/mp4"></video></td>
       </tr>
     </tbody>
     <tbody>
       <tr>
           <th>Dog</th>
-          <td><audio controls style="width: 150px;"><source src="demo/audios/baby.wav" type="audio/wav"></audio></td>
-          <td><video width="100%" height="315" controls><source src="demo/videos/baby.mp4" type="video/mp4"></video></td>            
-          <td><video width="100%" height="315" controls><source src="demo/videos/baby_gen.mp4" type="video/mp4"></video></td>
+            <td><video width="100%" height="315" controls><source src="demo/videos/dog.mp4" type="video/mp4"></video></td>  
+            <td><audio controls style="width: 150px;"><source src="demo/audios/dog.wav" type="audio/wav"></audio></td>                      
+            <td><video width="100%" height="315" controls><source src="demo/videos/dog_gen.mp4" type="video/mp4"></video></td>
       </tr>
     </tbody>
     <tbody>
       <tr>
           <th>Drum</th>
-          <td><audio controls style="width: 150px;"><source src="demo/audios/baby.wav" type="audio/wav"></audio></td>
-          <td><video width="100%" height="315" controls><source src="demo/videos/baby.mp4" type="video/mp4"></video></td>            
-          <td><video width="100%" height="315" controls><source src="demo/videos/baby_gen.mp4" type="video/mp4"></video></td>
+            <td><video width="100%" height="315" controls><source src="demo/videos/drum.mp4" type="video/mp4"></video></td>  
+            <td><audio controls style="width: 150px;"><source src="demo/audios/drum.wav" type="audio/wav"></audio></td>                      
+            <td><video width="100%" height="315" controls><source src="demo/videos/drum_gen.mp4" type="video/mp4"></video></td>
       </tr>
     </tbody>
     <tbody>
       <tr>
           <th>Fireworks</th>
-          <td><audio controls style="width: 150px;"><source src="demo/audios/baby.wav" type="audio/wav"></audio></td>
-          <td><video width="100%" height="315" controls><source src="demo/videos/baby.mp4" type="video/mp4"></video></td>            
-          <td><video width="100%" height="315" controls><source src="demo/videos/baby_gen.mp4" type="video/mp4"></video></td>
+            <td><video width="100%" height="315" controls><source src="demo/videos/fireworks.mp4" type="video/mp4"></video></td>  
+            <td><audio controls style="width: 150px;"><source src="demo/audios/fireworks.wav" type="audio/wav"></audio></td>                      
+            <td><video width="100%" height="315" controls><source src="demo/videos/fireworks_gen.mp4" type="video/mp4"></video></td>
       </tr>
     </tbody>
     <tbody>
       <tr>
           <th>Gun</th>
-          <td><audio controls style="width: 150px;"><source src="demo/audios/baby.wav" type="audio/wav"></audio></td>
-          <td><video width="100%" height="315" controls><source src="demo/videos/baby.mp4" type="video/mp4"></video></td>            
-          <td><video width="100%" height="315" controls><source src="demo/videos/baby_gen.mp4" type="video/mp4"></video></td>
+            <td><video width="100%" height="315" controls><source src="demo/videos/gun.mp4" type="video/mp4"></video></td>  
+            <td><audio controls style="width: 150px;"><source src="demo/audios/gun.wav" type="audio/wav"></audio></td>                      
+            <td><video width="100%" height="315" controls><source src="demo/videos/gun_gen.mp4" type="video/mp4"></video></td>
       </tr>
     </tbody>
     <tbody>
       <tr>
           <th>Hammer</th>
-          <td><audio controls style="width: 150px;"><source src="demo/audios/baby.wav" type="audio/wav"></audio></td>
-          <td><video width="100%" height="315" controls><source src="demo/videos/baby.mp4" type="video/mp4"></video></td>            
-          <td><video width="100%" height="315" controls><source src="demo/videos/baby_gen.mp4" type="video/mp4"></video></td>
+            <td><video width="100%" height="315" controls><source src="demo/videos/hammer.mp4" type="video/mp4"></video></td>  
+            <td><audio controls style="width: 150px;"><source src="demo/audios/hammer.wav" type="audio/wav"></audio></td>                      
+            <td><video width="100%" height="315" controls><source src="demo/videos/hammer_gen.mp4" type="video/mp4"></video></td>
       </tr>
     </tbody>
     <tbody>
       <tr>
           <th>Sneeze</th>
-          <td><audio controls style="width: 150px;"><source src="demo/audios/baby.wav" type="audio/wav"></audio></td>
-          <td><video width="100%" height="315" controls><source src="demo/videos/baby.mp4" type="video/mp4"></video></td>            
-          <td><video width="100%" height="315" controls><source src="demo/videos/baby_gen.mp4" type="video/mp4"></video></td>
+            <td><video width="100%" height="315" controls><source src="demo/videos/sneeze.mp4" type="video/mp4"></video></td>  
+            <td><audio controls style="width: 150px;"><source src="demo/audios/sneeze.wav" type="audio/wav"></audio></td>                      
+            <td><video width="100%" height="315" controls><source src="demo/videos/sneeze_gen.mp4" type="video/mp4"></video></td>
       </tr>
     </tbody>
 </table>
