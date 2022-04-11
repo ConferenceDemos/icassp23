@@ -16,14 +16,16 @@ we have a video clip V of an object breaking for movie production, but the natur
     <thead>
         <th>Category</th>
         <th>Original Video</th>
-        <th>Reference Audio</th>        
+        <th>Reference Audio</th>
+        <th>Video with Baseline Audio</th>
         <th>Video with Generated Audio</th>
     </thead>
     <tbody>
         <tr>
             <th>Baby</th>
             <td><video width="100%" height="240" controls><source src="demo/videos/baby.mp4" type="video/mp4"></video></td>  
-            <td><audio controls style="width: 150px;"><source src="demo/audios/baby.wav" type="audio/wav"></audio></td>                      
+            <td><audio controls style="width: 150px;"><source src="demo/audios/baby.wav" type="audio/wav"></audio></td>
+            <td><video width="100%" height="240" controls><source src="demo/videos/baby_baseline.mp4" type="video/mp4"></video></td>
             <td><video width="100%" height="240" controls><source src="demo/videos/baby_gen.mp4" type="video/mp4"></video></td>
         </tr>
     </tbody>
@@ -31,7 +33,8 @@ we have a video clip V of an object breaking for movie production, but the natur
       <tr>
           <th>Cough</th>
             <td><video width="100%" height="240" controls><source src="demo/videos/cough.mp4" type="video/mp4"></video></td>  
-            <td><audio controls style="width: 150px;"><source src="demo/audios/cough.wav" type="audio/wav"></audio></td>                      
+            <td><audio controls style="width: 150px;"><source src="demo/audios/cough.wav" type="audio/wav"></audio></td>
+          <td><video width="100%" height="240" controls><source src="demo/videos/cough_baseline.mp4" type="video/mp4"></video></td>
             <td><video width="100%" height="240" controls><source src="demo/videos/cough_gen.mp4" type="video/mp4"></video></td>
       </tr>
     </tbody>
@@ -39,7 +42,8 @@ we have a video clip V of an object breaking for movie production, but the natur
       <tr>
           <th>Dog</th>
             <td><video width="100%" height="240" controls><source src="demo/videos/dog.mp4" type="video/mp4"></video></td>  
-            <td><audio controls style="width: 150px;"><source src="demo/audios/dog.wav" type="audio/wav"></audio></td>                      
+            <td><audio controls style="width: 150px;"><source src="demo/audios/dog.wav" type="audio/wav"></audio></td>
+            <td><video width="100%" height="240" controls><source src="demo/videos/dog_baseline.mp4" type="video/mp4"></video></td>
             <td><video width="100%" height="240" controls><source src="demo/videos/dog_gen.mp4" type="video/mp4"></video></td>
       </tr>
     </tbody>
@@ -47,7 +51,8 @@ we have a video clip V of an object breaking for movie production, but the natur
       <tr>
           <th>Drum</th>
             <td><video width="100%" height="240" controls><source src="demo/videos/drum.mp4" type="video/mp4"></video></td>  
-            <td><audio controls style="width: 150px;"><source src="demo/audios/drum.wav" type="audio/wav"></audio></td>                      
+            <td><audio controls style="width: 150px;"><source src="demo/audios/drum.wav" type="audio/wav"></audio></td>
+          <td><video width="100%" height="240" controls><source src="demo/videos/drum_baseline.mp4" type="video/mp4"></video></td>
             <td><video width="100%" height="240" controls><source src="demo/videos/drum_gen.mp4" type="video/mp4"></video></td>
       </tr>
     </tbody>
@@ -55,7 +60,8 @@ we have a video clip V of an object breaking for movie production, but the natur
       <tr>
           <th>Fireworks</th>
             <td><video width="100%" height="240" controls><source src="demo/videos/fireworks.mp4" type="video/mp4"></video></td>  
-            <td><audio controls style="width: 150px;"><source src="demo/audios/fireworks.wav" type="audio/wav"></audio></td>                      
+            <td><audio controls style="width: 150px;"><source src="demo/audios/fireworks.wav" type="audio/wav"></audio></td>
+          <td><video width="100%" height="240" controls><source src="demo/videos/fireworks_baseline.mp4" type="video/mp4"></video></td>
             <td><video width="100%" height="240" controls><source src="demo/videos/fireworks_gen.mp4" type="video/mp4"></video></td>
       </tr>
     </tbody>
@@ -63,7 +69,8 @@ we have a video clip V of an object breaking for movie production, but the natur
       <tr>
           <th>Gun</th>
             <td><video width="100%" height="240" controls><source src="demo/videos/gun.mp4" type="video/mp4"></video></td>  
-            <td><audio controls style="width: 150px;"><source src="demo/audios/gun.wav" type="audio/wav"></audio></td>                      
+            <td><audio controls style="width: 150px;"><source src="demo/audios/gun.wav" type="audio/wav"></audio></td>
+            <td><video width="100%" height="240" controls><source src="demo/videos/gun_baseline.mp4" type="video/mp4"></video></td>
             <td><video width="100%" height="240" controls><source src="demo/videos/gun_gen.mp4" type="video/mp4"></video></td>
       </tr>
     </tbody>
@@ -71,7 +78,8 @@ we have a video clip V of an object breaking for movie production, but the natur
       <tr>
           <th>Hammer</th>
             <td><video width="100%" height="240" controls><source src="demo/videos/hammer.mp4" type="video/mp4"></video></td>  
-            <td><audio controls style="width: 150px;"><source src="demo/audios/hammer.wav" type="audio/wav"></audio></td>                      
+            <td><audio controls style="width: 150px;"><source src="demo/audios/hammer.wav" type="audio/wav"></audio></td>
+            <td><video width="100%" height="240" controls><source src="demo/videos/hammer_baseline.mp4" type="video/mp4"></video></td>
             <td><video width="100%" height="240" controls><source src="demo/videos/hammer_gen.mp4" type="video/mp4"></video></td>
       </tr>
     </tbody>
@@ -79,7 +87,8 @@ we have a video clip V of an object breaking for movie production, but the natur
       <tr>
           <th>Sneeze</th>
             <td><video width="100%" height="240" controls><source src="demo/videos/sneeze.mp4" type="video/mp4"></video></td>  
-            <td><audio controls style="width: 150px;"><source src="demo/audios/sneeze.wav" type="audio/wav"></audio></td>                      
+            <td><audio controls style="width: 150px;"><source src="demo/audios/sneeze.wav" type="audio/wav"></audio></td>
+          <td><video width="100%" height="240" controls><source src="demo/videos/sneeze_baseline.mp4" type="video/mp4"></video></td>
             <td><video width="100%" height="240" controls><source src="demo/videos/sneeze_gen.mp4" type="video/mp4"></video></td>
       </tr>
     </tbody>
