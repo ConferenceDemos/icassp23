@@ -1,7 +1,23 @@
 # VarietySound
 ----
 
-## VarietySound : Timbre Controllable and Temporal Aligned Video-to-Sound Generation
+## VarietySound: Timbre-Controllable Video to Sound Generation via Unsupervised Information Disentanglement
+
+### Abstract
+
+Video to sound generation aims to generate realistic and natural sound given a video input.
+However, previous video-to-sound generation methods can only generate a random or average timbre without any controls or specializations of the generated sound timbre, leading to the problem that people cannot obtain the desired timbre under these methods sometimes. 
+In this paper, we pose the task of generating sound with a specific timbre given a video input and a reference audio sample.
+To solve this task, we disentangle each target sound audio into three components: temporal information, acoustic information, and background information.
+We first use three encoders to encode these components respectively:
+- 1) a temporal encoder to encode temporal information, which is fed with video frames since the input video shares the same temporal information as the original audio;
+- 2) an acoustic encoder to encode timbre information, which takes the original audio as input and discards its temporal information by a temporal-corrupting operation;
+- 3) and a background encoder to encode the residual or background sound, which uses the background part of the original audio as input.
+
+Then we use a decoder to reconstruct the audio given these disentangled representations encoded by three encoders.
+To make the generated result achieve better quality and temporal alignment, we also adopt a mel discriminator and a temporal discriminator for the adversarial training.
+In inference, we feed the video, the reference audio and the silent audio into temporal, acoustic and background encoders and then generate the audio which is synchronized with the events in the video and has the same acoustic characteristics as the reference audio with no background noise.
+Our experimental results on the VAS dataset demonstrate that our method can generate high-quality audio samples with good synchronization with events in video and high timbre similarity with the reference audio.
 
 ### Timbre Controllable Video to Sound Generation
 
