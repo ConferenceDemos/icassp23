@@ -110,6 +110,52 @@ we have a video clip V of an object breaking for movie production, but the natur
     </tbody>
 </table>
 
+### Results Using Different Length Audio
+
+(Take Dogs For Example)
+
+<table>
+    <thead>
+        <th>Sample Number</th>
+        <th>Ground Truth Audio From Video Sound Track</th>
+        <th>Reference Audio</th>
+        <th>Using 0.5x Length Reference Audio</th>
+        <th>Using 1.0x Length Reference Audio</th>
+        <th>Using 2.0x Length Reference Audio</th>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Sample 1</th>
+            <td><audio controls style="width: 150px;"><source src="demo/audios/lengthdemos/gt/1.wav" type="audio/wav"></audio></td>
+            <td><audio controls style="width: 150px;"><source src="demo/audios/lengthdemos/ref.wav" type="audio/wav"></audio></td>
+            <td><audio controls style="width: 150px;"><source src="demo/audios/lengthdemos/0.5/1.wav" type="audio/wav"></audio></td>
+            <td><audio controls style="width: 150px;"><source src="demo/audios/lengthdemos/1.0/1.wav" type="audio/wav"></audio></td>
+            <td><audio controls style="width: 150px;"><source src="demo/audios/lengthdemos/2.0/1.wav" type="audio/wav"></audio></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <th>Sample 2</th>
+            <td><audio controls style="width: 150px;"><source src="demo/audios/lengthdemos/gt/2.wav" type="audio/wav"></audio></td>
+            <td><audio controls style="width: 150px;"><source src="demo/audios/lengthdemos/ref.wav" type="audio/wav"></audio></td>
+            <td><audio controls style="width: 150px;"><source src="demo/audios/lengthdemos/0.5/2.wav" type="audio/wav"></audio></td>
+            <td><audio controls style="width: 150px;"><source src="demo/audios/lengthdemos/1.0/2.wav" type="audio/wav"></audio></td>
+            <td><audio controls style="width: 150px;"><source src="demo/audios/lengthdemos/2.0/2.wav" type="audio/wav"></audio></td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr>
+            <th>Sample 3</th>
+            <td><audio controls style="width: 150px;"><source src="demo/audios/lengthdemos/gt/3.wav" type="audio/wav"></audio></td>
+            <td><audio controls style="width: 150px;"><source src="demo/audios/lengthdemos/ref.wav" type="audio/wav"></audio></td>
+            <td><audio controls style="width: 150px;"><source src="demo/audios/lengthdemos/0.5/3.wav" type="audio/wav"></audio></td>
+            <td><audio controls style="width: 150px;"><source src="demo/audios/lengthdemos/1.0/3.wav" type="audio/wav"></audio></td>
+            <td><audio controls style="width: 150px;"><source src="demo/audios/lengthdemos/2.0/3.wav" type="audio/wav"></audio></td>
+        </tr>
+    </tbody>
+</table>
+
+
 ----
 
 <!-- ## Welcome to GitHub Pages
