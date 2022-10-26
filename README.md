@@ -154,7 +154,7 @@ $\boldsymbol{W\_{\cdot}}\* $ and $\boldsymbol{V\_{\cdot}}\* $ denote the single 
 
 #### Model Configuration
 We list hyperparameters and configurations of all models used in our experiments in Table:
-<style type="text/css">
+<!-- <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
   overflow:hidden;padding:10px 5px;word-break:normal;}
@@ -165,7 +165,7 @@ We list hyperparameters and configurations of all models used in our experiments
 .tg .tg-wa1i{font-weight:bold;text-align:center;vertical-align:middle}
 .tg .tg-uzvj{border-color:inherit;font-weight:bold;text-align:center;vertical-align:middle}
 .tg .tg-nrix{text-align:center;vertical-align:middle}
-</style>
+</style> -->
 <table class="tg">
 <thead>
   <tr>
@@ -319,6 +319,132 @@ In particular, instead of using speaker labels, our sound conversion model uses 
 The cascade model's configuration follows the official implementation of the two models.
 
 #### Evaluation Design
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-nrix{text-align:center;vertical-align:middle}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-nrix" colspan="2">MOS of Realism</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-nrix">Score</td>
+    <td class="tg-nrix">Meaning</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">5</td>
+    <td class="tg-nrix">Completely real sound</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">4</td>
+    <td class="tg-nrix">Mostly real sound</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">3</td>
+    <td class="tg-nrix">Equally real and unreal sound</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">2</td>
+    <td class="tg-nrix">Mostly unreal sound</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">1</td>
+    <td class="tg-nrix">Completely unreal sound</td>
+  </tr>
+</tbody>
+</table>
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-nrix{text-align:center;vertical-align:middle}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-nrix" colspan="2">MOS of Temporal Alignment</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-nrix">Score</td>
+    <td class="tg-nrix">Meaning</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">5</td>
+    <td class="tg-nrix">Events in video and events in audio<br> occur simultaneously</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">4</td>
+    <td class="tg-nrix">Slight misalignment between events<br> in video and events in audio</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">3</td>
+    <td class="tg-nrix">Exist misalignment in some positions</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">2</td>
+    <td class="tg-nrix">Exist misalignment in most of the positions</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">1</td>
+    <td class="tg-nrix">Completely misalignment, no events in audio<br> can match the video</td>
+  </tr>
+</tbody>
+</table>
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-nrix{text-align:center;vertical-align:middle}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-nrix" colspan="2">MOS of Timbre Similarity</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-nrix">Score</td>
+    <td class="tg-nrix">Meaning</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">5</td>
+    <td class="tg-nrix">Timbre is exactly the same as target</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">4</td>
+    <td class="tg-nrix">Timbre has high similarity<br> with the target but not same</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">3</td>
+    <td class="tg-nrix">Timbre has similarity with the target,<br> but there are obvious differences</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">2</td>
+    <td class="tg-nrix">Timbre has a large gap with the target,<br> but share the same category of the sound</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">1</td>
+    <td class="tg-nrix">Timbre is completely different to the target</td>
+  </tr>
+</tbody>
+</table>
 
 We give the detailed definition of the MOS score on the subjective evaluation of audio realism, temporal alignment and timbre similarity in Table above, respectively.
 
