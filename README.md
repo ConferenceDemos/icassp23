@@ -163,12 +163,10 @@ In the training phase, this information is added to match the target mel-spectro
 
 In the training phase of the generator, we use video features and mel-spectrogram from the same sample feed into the network, where the video features are fed into the Temporal Encoder and the mel-spectrogram is fed into the Acoustic and Background Encoders.
 Our disentanglement method is unsupervised because there is no explicit intermediate information representation as a training target.
-The outputs of the three encoders are jointly fed to the Mel Decoder to obtain the final reconstructed mel-spectrogram, and the generation losses are calculated with the real mel-spectrogram as Sec. \textit{Generator Loss} to guide the training of the generator.
+The outputs of the three encoders are jointly fed to the Mel Decoder to obtain the final reconstructed mel-spectrogram, and the generation losses are calculated with the real mel-spectrogram to guide the training of the generator.
 
 In the training phase of the discriminator, for the Time-Domain Alignment Discriminator, the video features and mel-spectrogram from the same real sample are used as inputs to construct positive samples, while the real video features and the reconstructed mel-spectrogram are used as inputs to construct negative samples.
 For the Multi-Window Mel Discriminator, the real mel-spectrogram from the sample is used as a positive sample and the reconstructed mel-spectrogram is used as a negative sample input.
-The two discriminators calculate the losses and iteratively train according to the method in Sec. \textit{Discriminator Loss}.
-
 
 In the inference phase, we feed the video features into the temporal encoder, the mel-spectrogram of the reference audio containing the target timbre into the acoustic encoder, and the mel-spectrogram of the muted audio into the background encoder, and then generate the sound through the mel decoder.
 The choice of reference audio is arbitrary, depending on the desired target timbre.
@@ -749,7 +747,7 @@ Due to the imbalance in the amount of data in each category in the dataset, we c
 In the evaluation of the audio quality, the baseline model achieved a relatively low score. 
 This is because the cascade model accumulates the errors of both models during the generation process, bringing apparent defects to the generated audio, such as noise, electrotonality, or mechanicalness.
 
-For the similarity of the timbre, as shown in Table \ref{tab:sim}, the proposed model achieve higher scores both in the subjective and objective evaluation, which means the result of proposed model have a timbre closer to the ground truth than the baseline model.
+For the similarity of the timbre, the proposed model achieve higher scores both in the subjective and objective evaluation, which means the result of proposed model have a timbre closer to the ground truth than the baseline model.
 
 We did not compare the generation speed because, empirically, the inference efficiency of a single model is usually much higher than that of a cascade model.
 
