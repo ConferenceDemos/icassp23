@@ -243,7 +243,7 @@ We list hyperparameters and configurations of all models used in our experiments
     <td class="tg-nrix">2</td>
   </tr>
   <tr>
-    <td class="tg-nrix" rowspan="7">Time-Domain <br>Aligment Discriminator</td>
+    <td class="tg-nrix" rowspan="7">Temporal Domain <br>Aligment Discriminator</td>
     <td class="tg-9wq8">ConvT1D Layers</td>
     <td class="tg-9wq8">2</td>
     <td class="tg-nrix">ConvT1D <br>Filter Size</td>
@@ -320,14 +320,14 @@ The cascade model's configuration follows the official implementation of the two
 
 #### Evaluation Design
 
-<style type="text/css">
+<!-- <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
   overflow:hidden;padding:10px 5px;word-break:normal;}
 .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
   font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
 .tg .tg-nrix{text-align:center;vertical-align:middle}
-</style>
+</style> -->
 <table class="tg">
 <thead>
   <tr>
@@ -362,14 +362,14 @@ The cascade model's configuration follows the official implementation of the two
 </tbody>
 </table>
 
-<style type="text/css">
+<!-- <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
   overflow:hidden;padding:10px 5px;word-break:normal;}
 .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
   font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
 .tg .tg-nrix{text-align:center;vertical-align:middle}
-</style>
+</style> -->
 <table class="tg">
 <thead>
   <tr>
@@ -404,14 +404,14 @@ The cascade model's configuration follows the official implementation of the two
 </tbody>
 </table>
 
-<style type="text/css">
+<!-- <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
   overflow:hidden;padding:10px 5px;word-break:normal;}
 .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
   font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
 .tg .tg-nrix{text-align:center;vertical-align:middle}
-</style>
+</style> -->
 <table class="tg">
 <thead>
   <tr>
@@ -483,7 +483,122 @@ For the ablation experiments, we only consider the reconstruction quality of the
 #### Cosine Similarity
 
 #### Ablation Results
-
+<!-- <style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+.tg .tg-wa1i{font-weight:bold;text-align:center;vertical-align:middle}
+.tg .tg-nrix{text-align:center;vertical-align:middle}
+.tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-xxp7{font-style:italic;font-weight:bold;text-align:center;vertical-align:middle}
+</style>
+<table class="tg"> -->
+<thead>
+  <tr>
+    <th class="tg-nrix" colspan="7"><span style="font-weight:400;font-style:normal">MCD Scores</span></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-nrix"></td>
+    <td class="tg-nrix" colspan="3">Generator Encoder Ablation</td>
+    <td class="tg-nrix" colspan="2">Discriminator Ablation</td>
+    <td class="tg-nrix" rowspan="2">Proposed</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh"><span style="font-weight:400;font-style:normal">Category</span></td>
+    <td class="tg-nrix">w/o Temporal</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">w/o Timbre</span></td>
+    <td class="tg-nrix">w/o Background</td>
+    <td class="tg-nrix">w/o Multi-Window <br>Mel Discriminator</td>
+    <td class="tg-nrix">w/o Temporal Domain <br>Alignment Discriminator</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">Baby</td>
+    <td class="tg-nrix">$5.26(\pm 0.16)$</td>
+    <td class="tg-nrix">$6.84(\pm 0.26)$</td>
+    <td class="tg-nrix">$4.77(\pm 0.10)$</td>
+    <td class="tg-nrix">$5.29(\pm 0.12)$</td>
+    <td class="tg-nrix">$5.12(\pm 0.12)$</td>
+    <td class="tg-wa1i">$3.75(\pm 0.25)$</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">Cough</td>
+    <td class="tg-nrix">$3.87(\pm 0.23)$</td>
+    <td class="tg-nrix">$5.16(\pm 0.20)$</td>
+    <td class="tg-nrix">$3.77(\pm 0.23)$</td>
+    <td class="tg-nrix">$4.41(\pm 0.17)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$4.79(\pm 0.19)$</span></td>
+    <td class="tg-wa1i">$3.72(\pm 0.14)$</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">Dog</td>
+    <td class="tg-nrix">$4.42(\pm 0.13)$</td>
+    <td class="tg-nrix">$4.89(\pm 0.15)$</td>
+    <td class="tg-nrix">$4.19(\pm 0.18)$</td>
+    <td class="tg-nrix">$4.22(\pm 0.20)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$4.44(\pm 0.14)$</span></td>
+    <td class="tg-wa1i">$3.90(\pm 0.14)$</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">Drum</td>
+    <td class="tg-nrix">$4.10(\pm 0.18)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$5.36(\pm 0.30)$</span></td>
+    <td class="tg-nrix">$4.01(\pm 0.18)$</td>
+    <td class="tg-nrix">$4.11(\pm 0.21)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$4.38(\pm 0.26)$</span></td>
+    <td class="tg-wa1i">$3.38(\pm 0.16)$</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">Fireworks</td>
+    <td class="tg-nrix">$3.85(\pm 0.08)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$4.91(\pm 0.18)$</span></td>
+    <td class="tg-nrix">$3.64(\pm 0.10)$</td>
+    <td class="tg-nrix">$3.61(\pm 0.10)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$3.68(\pm 0.12)$</span></td>
+    <td class="tg-wa1i">$3.10(\pm 0.13)$</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">Gun</td>
+    <td class="tg-nrix">$3.88(\pm 0.12)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$4.74(\pm 0.21)$</span></td>
+    <td class="tg-nrix">$3.73(\pm 0.20)$</td>
+    <td class="tg-nrix">$3.73(\pm 0.14)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$3.77(\pm 0.15)$</span></td>
+    <td class="tg-wa1i">$3.39(\pm 0.12)$</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">Hammer</td>
+    <td class="tg-nrix">$4.95(\pm 0.14)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$4.53(\pm 0.17)$</span></td>
+    <td class="tg-nrix">$4.05(\pm 0.27)$</td>
+    <td class="tg-nrix">$4.02(\pm 0.17)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$4.39(\pm 0.13)$</span></td>
+    <td class="tg-wa1i">$3.47(\pm 0.16)$</td>
+  </tr>
+  <tr>
+    <td class="tg-baqh">Sneeze</td>
+    <td class="tg-nrix">$4.50(\pm 0.15)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$5.91(\pm 0.38)$</span></td>
+    <td class="tg-nrix">$4.34(\pm 0.13)$</td>
+    <td class="tg-nrix">$4.58(\pm 0.22)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$4.97(\pm 0.20)$</span></td>
+    <td class="tg-wa1i">$4.04(\pm 0.18)$</td>
+  </tr>
+  <tr>
+    <td class="tg-amwm">Average</td>
+    <td class="tg-wa1i">$4.33(\pm 0.08)$</td>
+    <td class="tg-wa1i"><span style="font-style:normal">$5.25(\pm 0.12)$</span></td>
+    <td class="tg-wa1i">$4.14(\pm 0.07)$</td>
+    <td class="tg-wa1i">$4.25(\pm 0.08)$</td>
+    <td class="tg-wa1i"><span style="font-style:normal">$4.43(\pm 0.08)$</span></td>
+    <td class="tg-xxp7">$3.60(\pm 0.07)$</td>
+  </tr>
+</tbody>
+</table>
 In the ablation experiment of the generator, we calculate the MCD scores for the generated result when one information component encoded by a certain encoder is removed as an objective evaluation.
 As shown in Table above, the generated results of our model achieve the second-lowest score on all experiments.
 There is a phenomeon may evoke a confuse,
