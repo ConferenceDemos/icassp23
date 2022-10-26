@@ -13,7 +13,7 @@
 ----
 
 ## VarietySound: Timbre-Controllable Video to Sound Generation via Unsupervised Information Disentanglement
-
+----
 ### Abstract
 
 Video to sound generation aims to generate realistic and natural sound given a video input.
@@ -29,7 +29,7 @@ Then we use a decoder to reconstruct the audio given these disentangled represen
 To make the generated result achieve better quality and temporal alignment, we also adopt a mel discriminator and a temporal discriminator for the adversarial training.
 In inference, we feed the video, the reference audio and the silent audio into temporal, acoustic and background encoders and then generate the audio which is synchronized with the events in the video and has the same acoustic characteristics as the reference audio with no background noise.
 Our experimental results on the VAS dataset demonstrate that our method can generate high-quality audio samples with good synchronization with events in video and high timbre similarity with the reference audio.
-
+----
 ### Timbre Controllable Video to Sound Generation
 
 The current video-to-sound generation works share a common problem: all of their acoustic information comes from the model’s prediction and cannot control the timbre of the generated audio. To match this problem, we defined a task called Timbre Controllable Video to Sound Generation (TCVSG), whose target is to allow users to generate realistic sound effects with their desired timbre for silent videos.
@@ -37,7 +37,7 @@ The current video-to-sound generation works share a common problem: all of their
 ![Existing Tasks & Proposed Task](demo/imgs/task.png)
 
 we have a video clip V of an object breaking for movie production, but the natural recorded sounds are not impressive enough. So with this task, we can use an additional audio **A** with a more remarkable sound of breaking to generate an audio track for **V** . The generated audio **Aˆ** will be time-aligned with **V** , but has the same kind of sound as A which will make the video more exciting. As far as we know, we are the first to propose this task.
-
+----
 ### Generated Results
 <table>
     <thead>
@@ -122,7 +122,7 @@ we have a video clip V of an object breaking for movie production, but the natur
 </table>
 
 
-
+----
 ### Detailed Model Structure and Configuration
 
 #### Self-Gated Acoustic Unit
@@ -142,7 +142,7 @@ where $\mathbf{x_{i}}$ and $\mathbf{c_{i}}$ denote two inputs of the unit, $\mat
 $\boldsymbol{W\_{\cdot}}\* $ and $\boldsymbol{V\_{\cdot}}\* $ denote the single layer convolution in skip or output gate and the 2-layer convolutions in input gate separately.
 
 #### Model Configuration
-
+----
 ### Detailed Experimental Result
 
 #### Baseline Model
