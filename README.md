@@ -479,6 +479,150 @@ The model takes these video-audio pairs as input and gets 3 generated samples fo
 For the ablation experiments, we only consider the reconstruction quality of the samples, so we randomly select 10 original pairs in the test set as input and obtain the generated samples.
 
 #### MOS Results
+<!-- <style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+.tg .tg-wa1i{font-weight:bold;text-align:center;vertical-align:middle}
+.tg .tg-nrix{text-align:center;vertical-align:middle}
+</style> -->
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-nrix" colspan="10">MOS Score</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-nrix" rowspan="2"><span style="font-weight:400;font-style:normal">Category</span></td>
+    <td class="tg-wa1i" colspan="3"><span style="font-weight:400;font-style:normal">Audio Realism</span></td>
+    <td class="tg-nrix" colspan="3"><span style="font-weight:400;font-style:normal">Temporal Alignment</span></td>
+    <td class="tg-nrix" colspan="3"><span style="font-weight:400;font-style:normal">Timbre Similarity</span></td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">Ground Truth</td>
+    <td class="tg-nrix">Baseline</td>
+    <td class="tg-nrix">Proposed</td>
+    <td class="tg-nrix">Ground Truth</td>
+    <td class="tg-nrix">Baseline</td>
+    <td class="tg-nrix">Proposed</td>
+    <td class="tg-nrix">Ground Truth</td>
+    <td class="tg-nrix">Baseline</td>
+    <td class="tg-nrix">Proposed</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">Baby</td>
+    <td class="tg-nrix"><span style="font-style:normal">$</span>4.55 (\pm 0.10)$</td>
+    <td class="tg-nrix">$2.67 (\pm 0.23)$</td>
+    <td class="tg-nrix">$3.77 (\pm 0.15)$</td>
+    <td class="tg-nrix">$4.43 (\pm 0.08)$</td>
+    <td class="tg-nrix">$3.83 (\pm 0.17)$</td>
+    <td class="tg-nrix">$4.07 (\pm 0.10)$</td>
+    <td class="tg-baqh">-</td>
+    <td class="tg-baqh">$3.46 (\pm 0.17)$</td>
+    <td class="tg-baqh"><span style="font-weight:400;font-style:normal">$3.94 (\pm 0.08)$</span></td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">Cough</td>
+    <td class="tg-nrix"><span style="font-style:normal">$</span>4.32 (\pm 0.11)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$</span>3.30 (\pm 0.20)$</td>
+    <td class="tg-nrix">$<span style="font-style:normal">4.13(\pm 0.12)$</span></td>
+    <td class="tg-nrix">$<span style="font-style:normal">4.30(\pm 0.11)$</span></td>
+    <td class="tg-nrix">$<span style="font-style:normal">3.71(\pm 0.24)$</span></td>
+    <td class="tg-nrix">$<span style="font-style:normal">4.17(\pm 0.12)$</span></td>
+    <td class="tg-nrix">-</td>
+    <td class="tg-nrix">$3.48 (\pm 0.22)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$3.59 (\pm 0.09)$</span></td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">Dog</td>
+    <td class="tg-nrix">$4.45 (\pm 0.11)$</td>
+    <td class="tg-nrix">$3.21 (\pm 0.19)$</td>
+    <td class="tg-nrix">$4.18 (\pm 0.11)$</td>
+    <td class="tg-nrix">$4.45 (\pm 0.08)$</td>
+    <td class="tg-nrix">$4.32 (\pm 0.15)$</td>
+    <td class="tg-nrix">$4.40 (\pm 0.08)$</td>
+    <td class="tg-nrix">-</td>
+    <td class="tg-nrix">$3.63 (\pm 0.15)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$4.09 (\pm 0.08)$</span></td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">Drum</td>
+    <td class="tg-nrix">$4.62 (\pm 0.08)$</td>
+    <td class="tg-nrix">$2.91 (\pm 0.21)$</td>
+    <td class="tg-nrix">$4.12 (\pm 0.15)$</td>
+    <td class="tg-nrix">$4.56 (\pm 0.06)$</td>
+    <td class="tg-nrix">$3.64 (\pm 0.16)$</td>
+    <td class="tg-nrix">$4.25 (\pm 0.11)$</td>
+    <td class="tg-baqh">-</td>
+    <td class="tg-nrix">$3.72 (\pm 0.13)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$3.85 (\pm 0.09)$</span></td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">Fireworks</td>
+    <td class="tg-nrix">$4.56 (\pm 0.09)$</td>
+    <td class="tg-nrix">$3.16 (\pm 0.22)$</td>
+    <td class="tg-nrix">$4.23 (\pm 0.13)$</td>
+    <td class="tg-nrix">$4.47 (\pm 0.08)$</td>
+    <td class="tg-nrix">$4.00 (\pm 0.21)$</td>
+    <td class="tg-nrix">$4.35 (\pm 0.10)$</td>
+    <td class="tg-baqh">-</td>
+    <td class="tg-nrix">$3.43 (\pm 0.25)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$3.93 (\pm 0.07)$</span></td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">Gun</td>
+    <td class="tg-nrix">$4.38 (\pm 0.12)$</td>
+    <td class="tg-nrix">$2.76 (\pm 0.22)$</td>
+    <td class="tg-nrix">$4.02 (\pm 0.15)$</td>
+    <td class="tg-nrix">$4.45 (\pm 0.09)$</td>
+    <td class="tg-nrix">$4.08 (\pm 0.17)$</td>
+    <td class="tg-nrix">$4.25 (\pm 0.12)$</td>
+    <td class="tg-baqh">-</td>
+    <td class="tg-nrix">$3.45 (\pm 0.18)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$3.98 (\pm 0.08)$</span></td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">Hammer</td>
+    <td class="tg-nrix">$4.43 (\pm 0.12)$</td>
+    <td class="tg-nrix">$3.16 (\pm 0.26)$</td>
+    <td class="tg-nrix">$3.84 (\pm 0.14)$</td>
+    <td class="tg-nrix">$4.31 (\pm 0.08)$</td>
+    <td class="tg-nrix">$3.88 (\pm 0.19)$</td>
+    <td class="tg-nrix">$4.19 (\pm 0.13)$</td>
+    <td class="tg-baqh">-</td>
+    <td class="tg-nrix">$3.74 (\pm 0.17)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$3.99 (\pm 0.10)$</span></td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">Sneeze</td>
+    <td class="tg-nrix">$4.04 (\pm 0.13)$</td>
+    <td class="tg-nrix">$2.75 (\pm 0.22)$</td>
+    <td class="tg-nrix">$4.00 (\pm 0.15)$</td>
+    <td class="tg-nrix">$4.28 (\pm 0.12)$</td>
+    <td class="tg-nrix">$3.76 (\pm 0.23)$</td>
+    <td class="tg-nrix">$4.16 (\pm 0.11)$</td>
+    <td class="tg-baqh">-</td>
+    <td class="tg-nrix">$3.62 (\pm 0.18)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$3.72 (\pm 0.08)$</span></td>
+  </tr>
+  <tr>
+    <td class="tg-wa1i">Average</td>
+    <td class="tg-nrix">$4.42(\pm 0.04)$</td>
+    <td class="tg-nrix">$2.99 (\pm 0.08)$</td>
+    <td class="tg-nrix">$4.04(\pm 0.05)$</td>
+    <td class="tg-nrix">$4.41(\pm 0.03)$</td>
+    <td class="tg-nrix">$3.90 (\pm 0.07)$</td>
+    <td class="tg-nrix">$4.23(\pm 0.04)$</td>
+    <td class="tg-baqh">-</td>
+    <td class="tg-nrix">$3.57 (\pm 0.07)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$3.89 (\pm 0.03)$</span></td>
+  </tr>
+</tbody>
+</table>
 
 #### Cosine Similarity
 
