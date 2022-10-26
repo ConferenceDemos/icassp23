@@ -18,17 +18,15 @@
 
 ----
 
-[Abstract](## Abstract)
+[Abstract](##Abstract)
 
-[Task Introduce](## Task Introduce)
+[Task Introduce](#Task Introduce)
 
-[Demo Videos](## Demo Videos)
+[Demo Videos](#Demo Videos)
 
-[Method Detail](## Method Detail)
+[Method Detail](#Method Detail)
 
-[Detailed Experimental Result](## Detailed Experimental Result)
-
-[Abstract](## Abstract)
+[Detailed Experimental Result](#Detailed Experimental Result)
 
 
 ## Abstract
@@ -938,9 +936,10 @@ As a summary, by obtaining generation results and subjective evaluation results 
 </tbody>
 </table>
 In the ablation experiment of the generator, we calculate the MCD scores for the generated result when one information component encoded by a certain encoder is removed as an objective evaluation.
-As shown in Table above, the generated results of our model achieve the second-lowest score on all experiments.
-There is a phenomeon may evoke a confuse,
-The result is reasonable since there is a trade-off between audio reconstruction quality and audio quality due to the presence of background noise.
+As shown in Table above, the generated results of our model achieve the lowest score on all experiments.
+
+There is a phenomeon may evoke a confuse, since the audio with noise achieve a better score than the audio without it.
+This is reasonable because there is a trade-off between audio reconstruction quality and audio quality due to the presence of background noise.
 Specifically, the three parts of information are all necessary for the reconstruction of the target mel-spectrogram, and it will gain a larger distance between the generated result and the target audio when we discard one of the information, even if the information may conduct a negative impact on the quality of our generated results (e.g., the background noise).
 Meanwhile, the above results can also corroborate the effectiveness of the background encoder in our model.
 The results also show that timbre information has a more significant impact on the quality of the reconstructed audio than temporal information on average.
