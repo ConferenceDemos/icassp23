@@ -9,11 +9,14 @@
         });
     </script>
 </head>
+
 # VarietySound
 ----
 
 ## VarietySound: Timbre-Controllable Video to Sound Generation via Unsupervised Information Disentanglement
+
 ----
+
 ### Abstract
 
 Video to sound generation aims to generate realistic and natural sound given a video input.
@@ -29,7 +32,9 @@ Then we use a decoder to reconstruct the audio given these disentangled represen
 To make the generated result achieve better quality and temporal alignment, we also adopt a mel discriminator and a temporal discriminator for the adversarial training.
 In inference, we feed the video, the reference audio and the silent audio into temporal, acoustic and background encoders and then generate the audio which is synchronized with the events in the video and has the same acoustic characteristics as the reference audio with no background noise.
 Our experimental results on the VAS dataset demonstrate that our method can generate high-quality audio samples with good synchronization with events in video and high timbre similarity with the reference audio.
+
 ----
+
 ### Timbre Controllable Video to Sound Generation
 
 The current video-to-sound generation works share a common problem: all of their acoustic information comes from the model’s prediction and cannot control the timbre of the generated audio. To match this problem, we defined a task called Timbre Controllable Video to Sound Generation (TCVSG), whose target is to allow users to generate realistic sound effects with their desired timbre for silent videos.
@@ -37,7 +42,9 @@ The current video-to-sound generation works share a common problem: all of their
 ![Existing Tasks & Proposed Task](demo/imgs/task.png)
 
 we have a video clip V of an object breaking for movie production, but the natural recorded sounds are not impressive enough. So with this task, we can use an additional audio **A** with a more remarkable sound of breaking to generate an audio track for **V** . The generated audio **Aˆ** will be time-aligned with **V** , but has the same kind of sound as A which will make the video more exciting. As far as we know, we are the first to propose this task.
+
 ----
+
 ### Generated Results
 <table>
     <thead>
@@ -123,6 +130,7 @@ we have a video clip V of an object breaking for movie production, but the natur
 
 
 ----
+
 ### Detailed Model Structure and Configuration
 
 #### Self-Gated Acoustic Unit
@@ -136,13 +144,168 @@ Meanwhile, the output of the input gate is added with the output of the skip gat
 The above result is transformed by Random Resampling and used as the output vector of the feature output.
 
 For a clearer statement, the gated unit is described by the following equations:
-$$\mathbf{x_{o}}=\boldsymbol{R}[\tanh(\boldsymbol{W_{s}} * \mathbf{c_{i}}+\boldsymbol{V_{i}} * \mathbf{x_{i}}) \odot \sigma(\boldsymbol{W_{o}} *  \mathbf{c_{i}}+\boldsymbol{V_{i}} * \mathbf{x_{i}})]$$
-$$\mathbf{c_{o}}=\boldsymbol{R}[\boldsymbol{W_{s}} * \mathbf{c_{i}}]$$
+
+$\mathbf{x_{o}}=\boldsymbol{R}[\tanh(\boldsymbol{W_{s}} * \mathbf{c_{i}}+\boldsymbol{V_{i}} * \mathbf{x_{i}}) \odot \sigma(\boldsymbol{W_{o}} *  \mathbf{c_{i}}+\boldsymbol{V_{i}} * \mathbf{x_{i}})]$
+
+$\mathbf{c_{o}}=\boldsymbol{R}[\boldsymbol{W_{s}} * \mathbf{c_{i}}]$
+
 where $\mathbf{x_{i}}$ and $\mathbf{c_{i}}$ denote two inputs of the unit, $\mathbf{x_{o}}$ and $\mathbf{c_{o}}$ denote two outputs of the unit. $\odot$ denotes an element-wise multiplication operator, $\sigma(\cdot)$ is a sigmoid function. $\boldsymbol{R}[ \cdot ]$ denotes the random resampling transform, 
 $\boldsymbol{W\_{\cdot}}\* $ and $\boldsymbol{V\_{\cdot}}\* $ denote the single layer convolution in skip or output gate and the 2-layer convolutions in input gate separately.
 
 #### Model Configuration
+We list hyperparameters and configurations of all models used in our experiments in Table:
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-9wq8{border-color:inherit;text-align:center;vertical-align:middle}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+.tg .tg-wa1i{font-weight:bold;text-align:center;vertical-align:middle}
+.tg .tg-uzvj{border-color:inherit;font-weight:bold;text-align:center;vertical-align:middle}
+.tg .tg-nrix{text-align:center;vertical-align:middle}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-wa1i">Module</th>
+    <th class="tg-uzvj">Hyperparameter<br></th>
+    <th class="tg-uzvj">Size</th>
+    <th class="tg-wa1i">Module</th>
+    <th class="tg-wa1i">Hyperparameter<br></th>
+    <th class="tg-wa1i">Size</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-nrix" rowspan="7"><span style="font-weight:400;font-style:normal">Temporal </span><br><span style="font-weight:400;font-style:normal">Encoder</span></td>
+    <td class="tg-9wq8"> Input Dimension </td>
+    <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">2048</span></td>
+    <td class="tg-nrix" rowspan="7">Self-Gated <br>Acoustic Unit</td>
+    <td class="tg-nrix">Input-Gate <br>Conv1D-1 Kernel</td>
+    <td class="tg-nrix">5</td>
+  </tr>
+  <tr>
+    <td class="tg-9wq8">Conv1D Layers</td>
+    <td class="tg-9wq8">8</td>
+    <td class="tg-nrix">Input-Gate <br>Conv1D-2 Kernel</td>
+    <td class="tg-nrix">7</td>
+  </tr>
+  <tr>
+    <td class="tg-9wq8">Conv1D Kernel</td>
+    <td class="tg-9wq8">5</td>
+    <td class="tg-nrix">Input-Gate<br>Filter Size</td>
+    <td class="tg-nrix">512</td>
+  </tr>
+  <tr>
+    <td class="tg-9wq8">Conv1D Filter Size</td>
+    <td class="tg-9wq8">512</td>
+    <td class="tg-nrix">Output-Gate <br>Conv1D Kernel</td>
+    <td class="tg-nrix">3</td>
+  </tr>
+  <tr>
+    <td class="tg-9wq8">LSTM Layers</td>
+    <td class="tg-9wq8">2</td>
+    <td class="tg-nrix">Output-Gate <br>Conv1D Filter Size</td>
+    <td class="tg-nrix">512</td>
+  </tr>
+  <tr>
+    <td class="tg-9wq8">LSTM Hidden Size</td>
+    <td class="tg-9wq8">256</td>
+    <td class="tg-nrix">Skip-Gate <br>Conv1D Kernel</td>
+    <td class="tg-nrix">5</td>
+  </tr>
+  <tr>
+    <td class="tg-9wq8">Output Dimension</td>
+    <td class="tg-9wq8">8</td>
+    <td class="tg-nrix">Skip-Gate <br>Conv1D Filter Size</td>
+    <td class="tg-nrix">512</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix" rowspan="3">Acoustic <br>Encoder</td>
+    <td class="tg-9wq8">SGAU Layers</td>
+    <td class="tg-9wq8">5</td>
+    <td class="tg-nrix" rowspan="5">Mel Decoder</td>
+    <td class="tg-nrix">ConvT1D Layers</td>
+    <td class="tg-nrix">2</td>
+  </tr>
+  <tr>
+    <td class="tg-9wq8">LSTM Layers</td>
+    <td class="tg-9wq8">2</td>
+    <td class="tg-nrix">ConvT1D Kernel</td>
+    <td class="tg-nrix">4</td>
+  </tr>
+  <tr>
+    <td class="tg-9wq8">LSTM Hidden</td>
+    <td class="tg-9wq8">256</td>
+    <td class="tg-nrix">ConvT1D Stride</td>
+    <td class="tg-nrix">2</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix" rowspan="7">Time-Domain <br>Aligment Discriminator</td>
+    <td class="tg-9wq8">ConvT1D Layers</td>
+    <td class="tg-9wq8">2</td>
+    <td class="tg-nrix">ConvT1D <br>Filter Size</td>
+    <td class="tg-nrix">1024</td>
+  </tr>
+  <tr>
+    <td class="tg-9wq8">ConvT1D Kernel</td>
+    <td class="tg-9wq8">4</td>
+    <td class="tg-nrix">FFT Blocks</td>
+    <td class="tg-nrix">4</td>
+  </tr>
+  <tr>
+    <td class="tg-9wq8">ConvT1D Stride</td>
+    <td class="tg-9wq8">2</td>
+    <td class="tg-nrix" rowspan="2">Background <br>Encoder</td>
+    <td class="tg-nrix">LSTM Layers</td>
+    <td class="tg-nrix">2</td>
+  </tr>
+  <tr>
+    <td class="tg-9wq8">ConvT1D Filter Size</td>
+    <td class="tg-9wq8">1024</td>
+    <td class="tg-baqh">LSTM Hidden</td>
+    <td class="tg-baqh">128</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">Conv1D Layers</td>
+    <td class="tg-nrix">4</td>
+    <td class="tg-nrix" rowspan="4">FFT Block</td>
+    <td class="tg-nrix">Hidden Size</td>
+    <td class="tg-nrix">512</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">Conv1D Kernel</td>
+    <td class="tg-nrix">4</td>
+    <td class="tg-nrix">Attention Headers</td>
+    <td class="tg-nrix">2</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">Conv1D Filter Size</span></td>
+    <td class="tg-nrix">512</td>
+    <td class="tg-nrix">Conv1D Kernel</td>
+    <td class="tg-nrix">9</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix" rowspan="2">Training Loss</td>
+    <td class="tg-nrix">$\lambda_{m}$</td>
+    <td class="tg-nrix">1e5</td>
+    <td class="tg-nrix">Conv1D Filter Size</td>
+    <td class="tg-nrix">512</td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">$\lambda_{a}$</td>
+    <td class="tg-nrix">1.0</td>
+    <td class="tg-nrix"></td>
+    <td class="tg-nrix"></td>
+    <td class="tg-nrix"></td>
+  </tr>
+</tbody>
+</table>
+
 ----
+
 ### Detailed Experimental Result
 
 #### Baseline Model
@@ -167,7 +330,9 @@ Samples with a shorter interval between the moment of the event in the video and
 
 In the evaluation of timbre similarity, we ask the rater to listen to one original audio and several test audios and score how similar the test audio timbre is to the original audio timbre.
 For cosine similarity, we calculate the cosine similarity between the target audio and ground truth audio timbre features using the following equation:
-$$CosSim(X,Y) = \frac{ \sum \limits_{i=1}^{n}(x_{i} * y_{i})}{ \sqrt{ \sum \limits_{i=1}^{n}(x_{i})^{2}} \sqrt{  \sum \limits_{i=1}^{n}(y_{i})^{2} } } $$
+
+$CosSim(X,Y) = \frac{ \sum \limits_{i=1}^{n}(x_{i} * y_{i})}{ \sqrt{ \sum \limits_{i=1}^{n}(x_{i})^{2}} \sqrt{  \sum \limits_{i=1}^{n}(y_{i})^{2} } } $
+
 , and the timbre features are calculated by the [third-party library](https://github.com/resemble-ai/Resemblyzer).
 The higher the similarity between the test audio and the original audio sound, the higher the score will be.
 
@@ -194,7 +359,8 @@ For the ablation experiments, we only consider the reconstruction quality of the
 #### Ablation Results
 
 In the ablation experiment of the generator, we calculate the MCD scores for the generated result when one information component encoded by a certain encoder is removed as an objective evaluation.
-As shown in Table above, the generated results of our model achieve the second-lowest score on all experiments, while the results with the background information achieve the lowest score on all experiments.
+As shown in Table above, the generated results of our model achieve the second-lowest score on all experiments.
+There is a phenomeon may evoke a confuse,
 The result is reasonable since there is a trade-off between audio reconstruction quality and audio quality due to the presence of background noise.
 Specifically, the three parts of information are all necessary for the reconstruction of the target mel-spectrogram, and it will gain a larger distance between the generated result and the target audio when we discard one of the information, even if the information may conduct a negative impact on the quality of our generated results (e.g., the background noise).
 Meanwhile, the above results can also corroborate the effectiveness of the background encoder in our model.
@@ -208,7 +374,7 @@ For the background information, when it is added during inference, the mel-spect
 In the ablation experiments of discriminators, we retrain our model with one of the discriminators disabled. The experiments are performed under the same settings and configurations as before.  
 As can be observed in Table , the MCD scores of the generated results for almost all categories decreased to various extents after removing any of the discriminators.
 On average, the impact of removing the Temporal Domain Alignment Discriminator is more significant than that of removing the Multi-window Mel Discriminator.
-Due to the fact that the mel-spectrogram compresses the high-frequency components to some extent, some of the categories with high-frequency information content, such as \textit{Fireworks}, \textit{Gun}, and \textit{Hammer}, do not have significant differences in the scores obtained after removing the mel discriminator.
+Due to the fact that the mel-spectrogram compresses the high-frequency components to some extent, some of the categories with high-frequency information content, such as _Fireworks_, _Gun_, and _Hammer_, do not have significant differences in the scores obtained after removing the mel discriminator.
 
 #### Results Using Different Length Audio
 
