@@ -739,6 +739,24 @@ For the ablation experiments, we only consider the reconstruction quality of the
 </tbody>
 </table>
 
+Through the third-party evaluation on the _Amazon Mechanical Turk_ (AMT), we obtained the evaluation results of our model.
+
+As shown in the Table \ref{tab:Evaluation}, the proposed model achieves scores closer to ground truth in terms of both audio realism and temporal alignment by comparing with the baseline model.
+The category of _Dog_ and _Fireworks_ have the best average performance in the two evaluations.
+The category of _Baby_ gains the worst performance in the evaluation of audio realism and temporal alignment due to the uncertainty and diversity in human behavior which is hard for modeling, the same trend also appears in the category of _Cough_ and _Sneeze_.
+Due to the imbalance in the amount of data in each category in the dataset, we can see that the four categories with smaller amounts of data (_Cough, Gun, Hammer_ and _Sneeze_) will have overall lower temporal alignment scores than the four categories with larger amounts of data (_Baby, Dog, Fireworks_ and _Drum_) in both evaluations, suggesting that the modeling of temporal alignment may be more sensitive to the amount of data.
+
+In the evaluation of the audio quality, the baseline model achieved a relatively low score. 
+This is because the cascade model accumulates the errors of both models during the generation process, bringing apparent defects to the generated audio, such as noise, electrotonality, or mechanicalness.
+
+For the similarity of the timbre, as shown in Table \ref{tab:sim}, the proposed model achieve higher scores both in the subjective and objective evaluation, which means the result of proposed model have a timbre closer to the ground truth than the baseline model.
+
+We did not compare the generation speed because, empirically, the inference efficiency of a single model is usually much higher than that of a cascade model.
+
+As a summary, by obtaining generation results and subjective evaluation results above, we have successfully demonstrated the effectiveness of our method and model.
+
+
+
 ### Ablation Results
 <!-- <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
