@@ -515,7 +515,7 @@ For the ablation experiments, we only consider the reconstruction quality of the
   </tr>
   <tr>
     <td class="tg-nrix">Baby</td>
-    <td class="tg-nrix"><span style="font-style:normal">$</span>4.55 (\pm 0.10)$</td>
+    <td class="tg-nrix">$4.55 (\pm 0.10)$</td>
     <td class="tg-nrix">$2.67 (\pm 0.23)$</td>
     <td class="tg-nrix">$3.77 (\pm 0.15)$</td>
     <td class="tg-nrix">$4.43 (\pm 0.08)$</td>
@@ -527,12 +527,12 @@ For the ablation experiments, we only consider the reconstruction quality of the
   </tr>
   <tr>
     <td class="tg-nrix">Cough</td>
-    <td class="tg-nrix"><span style="font-style:normal">$</span>4.32 (\pm 0.11)$</td>
-    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$</span>3.30 (\pm 0.20)$</td>
-    <td class="tg-nrix">$<span style="font-style:normal">4.13(\pm 0.12)$</span></td>
-    <td class="tg-nrix">$<span style="font-style:normal">4.30(\pm 0.11)$</span></td>
-    <td class="tg-nrix">$<span style="font-style:normal">3.71(\pm 0.24)$</span></td>
-    <td class="tg-nrix">$<span style="font-style:normal">4.17(\pm 0.12)$</span></td>
+    <td class="tg-nrix">$4.32 (\pm 0.11)$</td>
+    <td class="tg-nrix">$3.30 (\pm 0.20)$</td>
+    <td class="tg-nrix">$4.13(\pm 0.12)$</span></td>
+    <td class="tg-nrix">$4.30(\pm 0.11)$</span></td>
+    <td class="tg-nrix">$3.71(\pm 0.24)$</span></td>
+    <td class="tg-nrix">$4.17(\pm 0.12)$</span></td>
     <td class="tg-nrix">-</td>
     <td class="tg-nrix">$3.48 (\pm 0.22)$</td>
     <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$3.59 (\pm 0.09)$</span></td>
