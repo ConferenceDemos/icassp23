@@ -33,8 +33,8 @@ we have a video clip V of an object breaking for movie production, but the natur
         <th>Category</th>
         <th>Original Video</th>
         <th>Reference Audio</th>
-        <th>Video with Baseline Audio</th>
-        <th>Video with Generated Audio</th>
+        <th>Baseline</th>
+        <th>Proposed</th>
     </thead>
     <tbody>
         <tr>
