@@ -494,8 +494,8 @@ For the ablation experiments, we only consider the reconstruction quality of the
 .tg .tg-nrix{text-align:center;vertical-align:middle}
 .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
 .tg .tg-xxp7{font-style:italic;font-weight:bold;text-align:center;vertical-align:middle}
-</style>
-<table class="tg"> -->
+</style> -->
+<table class="tg"> 
 <thead>
   <tr>
     <th class="tg-nrix" colspan="7"><span style="font-weight:400;font-style:normal">MCD Scores</span></th>
