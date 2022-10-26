@@ -14,7 +14,15 @@
 
 ----
 
+## Context
+
+----
+
+
+
 ## Abstract
+
+----
 
 Video to sound generation aims to generate realistic and natural sound given a video input.
 However, previous video-to-sound generation methods can only generate a random or average timbre without any controls or specializations of the generated sound timbre, leading to the problem that people cannot obtain the desired timbre under these methods sometimes. 
@@ -30,9 +38,11 @@ To make the generated result achieve better quality and temporal alignment, we a
 In inference, we feed the video, the reference audio and the silent audio into temporal, acoustic and background encoders and then generate the audio which is synchronized with the events in the video and has the same acoustic characteristics as the reference audio with no background noise.
 Our experimental results on the VAS dataset demonstrate that our method can generate high-quality audio samples with good synchronization with events in video and high timbre similarity with the reference audio.
 
-----
+
 
 ## Timbre Controllable Video to Sound Generation
+
+----
 
 The current video-to-sound generation works share a common problem: all of their acoustic information comes from the model’s prediction and cannot control the timbre of the generated audio. To match this problem, we defined a task called Timbre Controllable Video to Sound Generation (TCVSG), whose target is to allow users to generate realistic sound effects with their desired timbre for silent videos.
 
@@ -40,9 +50,12 @@ The current video-to-sound generation works share a common problem: all of their
 
 we have a video clip V of an object breaking for movie production, but the natural recorded sounds are not impressive enough. So with this task, we can use an additional audio **A** with a more remarkable sound of breaking to generate an audio track for **V** . The generated audio **Aˆ** will be time-aligned with **V** , but has the same kind of sound as A which will make the video more exciting. As far as we know, we are the first to propose this task.
 
-----
+
 
 ## Generated Results
+
+----
+
 <table>
     <thead>
         <th>Category</th>
@@ -126,9 +139,11 @@ we have a video clip V of an object breaking for movie production, but the natur
 </table>
 
 
-----
+
 
 ## Method Detail
+
+----
 
 Our method is a process of information disentanglement and re-fusion.
 We first disentangle the final audio information into three components: temporal information, timbre information, and background information, modeling them with three different encoders respectively, and then use a mel decoder to recombine these disentangled information for the reconstruction of the audio.
@@ -137,13 +152,21 @@ We also adopt the adversarial training, which helps the model to fit the distrib
 
 ### Information Components Describe
 
+----
+
 #### Temporal Information
+
+----
+
 The temporal information refers to the location information in the time sequence corresponding to the occurrence of the sound event.
 In the temporal sequence, the position where the sound event occurs strongly correlates with the visual information adjacent to that position for real recorded video.
 Therefore, in our method, this part of the information will be predicted using the visual feature sequence of the input video.
 We also set a suitable bottleneck to ensure that the video can provide only temporal information without providing other acoustic content information.
 
 #### Timbre Information
+
+----
+
 Timbre information is considered an acoustic characteristic inherent to the sound-producing object.
 The distribution of timbres between different categories of objects can vary widely, and the timbres of different individuals of the same category of objects usually possess specific differences.
 In our method, this part of the information will be predicted by the reference audio.
@@ -151,6 +174,9 @@ The random resampling transform refers to the operations of segmenting, expand-s
 When encoding the reference timbre information, we perform a random resampling transform on the input reference audio in the time sequence to disrupt its temporal information.
 
 #### Background Information
+
+----
+
 Background information is perceived as timbre-independent other acoustic information, such as background noise or off-screen background sound.
 This part of the information is necessary for training to avoid model confusion due to the information mismatch.
 We found that the energy of this part of the information is usually much smaller in the mel-spectrogram than the part where the timbre information is present.
@@ -160,6 +186,8 @@ In the training phase, this information is added to match the target mel-spectro
 
 
 ### Training and Inference
+
+----
 
 In the training phase of the generator, we use video features and mel-spectrogram from the same sample feed into the network, where the video features are fed into the Temporal Encoder and the mel-spectrogram is fed into the Acoustic and Background Encoders.
 Our disentanglement method is unsupervised because there is no explicit intermediate information representation as a training target.
@@ -172,11 +200,16 @@ In the inference phase, we feed the video features into the temporal encoder, th
 The choice of reference audio is arbitrary, depending on the desired target timbre.
 Theoretically, the length of the video features and reference audio input during the inference phase is arbitrary, but it is necessary to ensure that the relevant events are present in the video and that the reference audio contains the desired timbre to obtain the normally generated sound.
 
-----
 
 ## Model Structure and Configuration
 
+----
+
+
 ### Self-Gated Acoustic Unit
+
+----
+
 
 Each SGAU has two inputs and two outputs, which we call feature inputs, feature outputs, conditional inputs, and conditional outputs, respectively.
 The feature input receives the input vectors and passes through two layers of 1D convolutional layers, which we call the input gate, and then normalized by Instance Normalization.
@@ -196,6 +229,9 @@ where $\mathbf{x_{i}}$ and $\mathbf{c_{i}}$ denote two inputs of the unit, $\mat
 $\boldsymbol{W\_{\cdot}}\* $ and $\boldsymbol{V\_{\cdot}}\* $ denote the single layer convolution in skip or output gate and the 2-layer convolutions in input gate separately.
 
 ### Model Configuration
+
+----
+
 We list hyperparameters and configurations of all models used in our experiments in Table:
 <!-- <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
@@ -347,11 +383,15 @@ We list hyperparameters and configurations of all models used in our experiments
 </tbody>
 </table>
 
-----
-
 ## Detailed Experimental Result
 
+----
+
+
 ### Baseline Model
+
+----
+
 Specifically, we build our cascade model using a video-to-sound generation model and a sound conversion model. The video-to-sound generation model is responsible for generating the corresponding audio for the muted video, while the sound conversion model is responsible for converting the timbre of the generated audio to the target timbre.
 We chose [REGNET](https://github.com/PeihaoChen/regnet/) as the video-to-sound generation model, which has an excellent performance in the previous tasks.
 For the sound conversion model, we consider using the voice conversion model which is used to accomplish similar tasks, since there is no explicitly defined sound conversion task and model.
@@ -362,6 +402,9 @@ In particular, instead of using speaker labels, our sound conversion model uses 
 The cascade model's configuration follows the official implementation of the two models.
 
 ### Evaluation Design
+
+----
+
 
 <!-- <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
@@ -507,6 +550,9 @@ The higher the similarity between the test audio and the original audio sound, t
 
 ### Sample Selection
 
+----
+
+
 To perform the evaluation, we randomly obtain test samples for each category in the following way.
 Since our model accepts a video and a reference audio as a sample for input, we refer to it as a video-audio pair, and if the video and the audio are from the same raw video data, it will be called the original pair.
 
@@ -522,6 +568,9 @@ The model takes these video-audio pairs as input and gets 3 generated samples fo
 For the ablation experiments, we only consider the reconstruction quality of the samples, so we randomly select 10 original pairs in the test set as input and obtain the generated samples.
 
 ### MOS Results
+
+----
+
 <!-- <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
@@ -669,6 +718,9 @@ For the ablation experiments, we only consider the reconstruction quality of the
 
 ### Cosine Similarity
 
+----
+
+
 <!-- <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
@@ -739,7 +791,7 @@ For the ablation experiments, we only consider the reconstruction quality of the
 
 Through the third-party evaluation on the _Amazon Mechanical Turk_ (AMT), we obtained the evaluation results of our model.
 
-As shown in the Table \ref{tab:Evaluation}, the proposed model achieves scores closer to ground truth in terms of both audio realism and temporal alignment by comparing with the baseline model.
+As shown in the Table, the proposed model achieves scores closer to ground truth in terms of both audio realism and temporal alignment by comparing with the baseline model.
 The category of _Dog_ and _Fireworks_ have the best average performance in the two evaluations.
 The category of _Baby_ gains the worst performance in the evaluation of audio realism and temporal alignment due to the uncertainty and diversity in human behavior which is hard for modeling, the same trend also appears in the category of _Cough_ and _Sneeze_.
 Due to the imbalance in the amount of data in each category in the dataset, we can see that the four categories with smaller amounts of data (_Cough, Gun, Hammer_ and _Sneeze_) will have overall lower temporal alignment scores than the four categories with larger amounts of data (_Baby, Dog, Fireworks_ and _Drum_) in both evaluations, suggesting that the modeling of temporal alignment may be more sensitive to the amount of data.
@@ -756,6 +808,9 @@ As a summary, by obtaining generation results and subjective evaluation results 
 
 
 ### Ablation Results
+
+----
+
 <!-- <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
@@ -890,6 +945,8 @@ On average, the impact of removing the Temporal Domain Alignment Discriminator i
 Due to the fact that the mel-spectrogram compresses the high-frequency components to some extent, some of the categories with high-frequency information content, such as _Fireworks_, _Gun_, and _Hammer_, do not have significant differences in the scores obtained after removing the mel discriminator.
 
 #### Results Using Different Length Audio
+
+----
 
 (Take Dogs For Example)
 
