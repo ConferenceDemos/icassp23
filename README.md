@@ -10,14 +10,11 @@
     </script>
 </head>
 
-# VarietySound
-----
-
-## VarietySound: Timbre-Controllable Video to Sound Generation via Unsupervised Information Disentanglement
+# VarietySound: Timbre-Controllable Video to Sound Generation via Unsupervised Information Disentanglement
 
 ----
 
-### Abstract
+## Abstract
 
 Video to sound generation aims to generate realistic and natural sound given a video input.
 However, previous video-to-sound generation methods can only generate a random or average timbre without any controls or specializations of the generated sound timbre, leading to the problem that people cannot obtain the desired timbre under these methods sometimes. 
@@ -35,7 +32,7 @@ Our experimental results on the VAS dataset demonstrate that our method can gene
 
 ----
 
-### Timbre Controllable Video to Sound Generation
+## Timbre Controllable Video to Sound Generation
 
 The current video-to-sound generation works share a common problem: all of their acoustic information comes from the model’s prediction and cannot control the timbre of the generated audio. To match this problem, we defined a task called Timbre Controllable Video to Sound Generation (TCVSG), whose target is to allow users to generate realistic sound effects with their desired timbre for silent videos.
 
@@ -45,7 +42,7 @@ we have a video clip V of an object breaking for movie production, but the natur
 
 ----
 
-### Generated Results
+## Generated Results
 <table>
     <thead>
         <th>Category</th>
@@ -131,9 +128,57 @@ we have a video clip V of an object breaking for movie production, but the natur
 
 ----
 
-### Detailed Model Structure and Configuration
+## Method Detail
 
-#### Self-Gated Acoustic Unit
+Our method is a process of information disentanglement and re-fusion.
+We first disentangle the final audio information into three components: temporal information, timbre information, and background information, modeling them with three different encoders respectively, and then use a mel decoder to recombine these disentangled information for the reconstruction of the audio.
+The disruption operations and the bottlenecks force the encoders to pass only the information that other encoders cannot supply, hence achieving the disentanglement; and with the sufficient information inputs, the mel decoder could finish the reconstruction of the target mel-spectrogram, hence achieving the re-fusion.
+We also adopt the adversarial training, which helps the model to fit the distribution of the target mel-spectrogram better and thus obtain higher quality and better temporal alignment generation results.
+
+### Information Components Describe
+
+#### Temporal Information
+The temporal information refers to the location information in the time sequence corresponding to the occurrence of the sound event.
+In the temporal sequence, the position where the sound event occurs strongly correlates with the visual information adjacent to that position for real recorded video.
+Therefore, in our method, this part of the information will be predicted using the visual feature sequence of the input video.
+We also set a suitable bottleneck to ensure that the video can provide only temporal information without providing other acoustic content information.
+
+#### Timbre Information
+Timbre information is considered an acoustic characteristic inherent to the sound-producing object.
+The distribution of timbres between different categories of objects can vary widely, and the timbres of different individuals of the same category of objects usually possess specific differences.
+In our method, this part of the information will be predicted by the reference audio.
+The random resampling transform refers to the operations of segmenting, expand-shrink transforming and random swapping of the tensor in the time sequence.
+When encoding the reference timbre information, we perform a random resampling transform on the input reference audio in the time sequence to disrupt its temporal information.
+
+#### Background Information
+Background information is perceived as timbre-independent other acoustic information, such as background noise or off-screen background sound.
+This part of the information is necessary for training to avoid model confusion due to the information mismatch.
+We found that the energy of this part of the information is usually much smaller in the mel-spectrogram than the part where the timbre information is present.
+Therefore, in the proposed method, we adopt an Energy Masking operation that masks the mel-spectrogram of the part of the energy larger than the median energy of the whole mel-spectrogram along the time dimension.
+The energy masking operation discards both temporal and timbre-related information of the mel-spectrogram, preserving only the background information in the audio.
+In the training phase, this information is added to match the target mel-spectrogram; in the inference phase, this information will be set to empty to generate clearer audio.
+
+
+### Training and Inference
+
+In the training phase of the generator, we use video features and mel-spectrogram from the same sample feed into the network, where the video features are fed into the Temporal Encoder and the mel-spectrogram is fed into the Acoustic and Background Encoders.
+Our disentanglement method is unsupervised because there is no explicit intermediate information representation as a training target.
+The outputs of the three encoders are jointly fed to the Mel Decoder to obtain the final reconstructed mel-spectrogram, and the generation losses are calculated with the real mel-spectrogram as Sec. \textit{Generator Loss} to guide the training of the generator.
+
+In the training phase of the discriminator, for the Time-Domain Alignment Discriminator, the video features and mel-spectrogram from the same real sample are used as inputs to construct positive samples, while the real video features and the reconstructed mel-spectrogram are used as inputs to construct negative samples.
+For the Multi-Window Mel Discriminator, the real mel-spectrogram from the sample is used as a positive sample and the reconstructed mel-spectrogram is used as a negative sample input.
+The two discriminators calculate the losses and iteratively train according to the method in Sec. \textit{Discriminator Loss}.
+
+
+In the inference phase, we feed the video features into the temporal encoder, the mel-spectrogram of the reference audio containing the target timbre into the acoustic encoder, and the mel-spectrogram of the muted audio into the background encoder, and then generate the sound through the mel decoder.
+The choice of reference audio is arbitrary, depending on the desired target timbre.
+Theoretically, the length of the video features and reference audio input during the inference phase is arbitrary, but it is necessary to ensure that the relevant events are present in the video and that the reference audio contains the desired timbre to obtain the normally generated sound.
+
+----
+
+## Model Structure and Configuration
+
+### Self-Gated Acoustic Unit
 
 Each SGAU has two inputs and two outputs, which we call feature inputs, feature outputs, conditional inputs, and conditional outputs, respectively.
 The feature input receives the input vectors and passes through two layers of 1D convolutional layers, which we call the input gate, and then normalized by Instance Normalization.
@@ -152,7 +197,7 @@ $\mathbf{c_{o}}=\boldsymbol{R}[\boldsymbol{W_{s}} * \mathbf{c_{i}}]$
 where $\mathbf{x_{i}}$ and $\mathbf{c_{i}}$ denote two inputs of the unit, $\mathbf{x_{o}}$ and $\mathbf{c_{o}}$ denote two outputs of the unit. $\odot$ denotes an element-wise multiplication operator, $\sigma(\cdot)$ is a sigmoid function. $\boldsymbol{R}[ \cdot ]$ denotes the random resampling transform, 
 $\boldsymbol{W\_{\cdot}}\* $ and $\boldsymbol{V\_{\cdot}}\* $ denote the single layer convolution in skip or output gate and the 2-layer convolutions in input gate separately.
 
-#### Model Configuration
+### Model Configuration
 We list hyperparameters and configurations of all models used in our experiments in Table:
 <!-- <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
@@ -306,9 +351,9 @@ We list hyperparameters and configurations of all models used in our experiments
 
 ----
 
-### Detailed Experimental Result
+## Detailed Experimental Result
 
-#### Baseline Model
+### Baseline Model
 Specifically, we build our cascade model using a video-to-sound generation model and a sound conversion model. The video-to-sound generation model is responsible for generating the corresponding audio for the muted video, while the sound conversion model is responsible for converting the timbre of the generated audio to the target timbre.
 We chose [REGNET](https://github.com/PeihaoChen/regnet/) as the video-to-sound generation model, which has an excellent performance in the previous tasks.
 For the sound conversion model, we consider using the voice conversion model which is used to accomplish similar tasks, since there is no explicitly defined sound conversion task and model.
@@ -318,7 +363,7 @@ The cascade model is trained on the same dataset (VAS) and in the same environme
 In particular, instead of using speaker labels, our sound conversion model uses a sound embedding obtained from a learnable LSTM network as an alternative for providing target timbre information.
 The cascade model's configuration follows the official implementation of the two models.
 
-#### Evaluation Design
+### Evaluation Design
 
 <!-- <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
@@ -462,7 +507,7 @@ $CosSim(X,Y) = \frac{ \sum \limits_{i=1}^{n}(x_{i} * y_{i})}{ \sqrt{ \sum \limit
 , and the timbre features are calculated by the [third-party library](https://github.com/resemble-ai/Resemblyzer).
 The higher the similarity between the test audio and the original audio sound, the higher the score will be.
 
-#### Sample Selection
+### Sample Selection
 
 To perform the evaluation, we randomly obtain test samples for each category in the following way.
 Since our model accepts a video and a reference audio as a sample for input, we refer to it as a video-audio pair, and if the video and the audio are from the same raw video data, it will be called the original pair.
@@ -478,7 +523,7 @@ The model takes these video-audio pairs as input and gets 3 generated samples fo
 
 For the ablation experiments, we only consider the reconstruction quality of the samples, so we randomly select 10 original pairs in the test set as input and obtain the generated samples.
 
-#### MOS Results
+### MOS Results
 <!-- <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
@@ -624,9 +669,77 @@ For the ablation experiments, we only consider the reconstruction quality of the
 </tbody>
 </table>
 
-#### Cosine Similarity
+### Cosine Similarity
 
-#### Ablation Results
+<!-- <style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-nrix{text-align:center;vertical-align:middle}
+</style> -->
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-nrix" rowspan="2"><span style="font-weight:400;font-style:normal">Category</span></th>
+    <th class="tg-nrix" colspan="2">Timbre Cosine Similarity</th>
+  </tr>
+  <tr>
+    <th class="tg-nrix">Baseline</th>
+    <th class="tg-nrix">Proposed</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-nrix">Baby</td>
+    <td class="tg-nrix">$0.86 (\pm 0.01)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$0.88 (\pm 0.00)$</span></td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">Cough</td>
+    <td class="tg-nrix">$0.86 (\pm 0.00)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$0.93 (\pm 0.01)$</span></td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">Dog</td>
+    <td class="tg-nrix">$0.77 (\pm 0.00)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$0.96 (\pm 0.00)$</span></td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">Drum</td>
+    <td class="tg-nrix">$0.74 (\pm 0.03)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$0.84 (\pm 0.00)$</span></td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">Fireworks</td>
+    <td class="tg-nrix">$0.88 (\pm 0.01)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$0.89 (\pm 0.01)$</span></td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">Gun</td>
+    <td class="tg-nrix">$0.83 (\pm 0.01)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$0.88 (\pm 0.01)$</span></td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">Hammer</td>
+    <td class="tg-nrix">$0.80 (\pm 0.02)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$0.89 (\pm 0.02)$</span></td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">Sneeze</td>
+    <td class="tg-nrix">$0.88 (\pm 0.01)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">0.98 $(\pm 0.01)$</span></td>
+  </tr>
+  <tr>
+    <td class="tg-nrix">Average</td>
+    <td class="tg-nrix">$0.84 (\pm 0.01)$</td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$0.90 (\pm 0.01)$</span></td>
+  </tr>
+</tbody>
+</table>
+
+### Ablation Results
 <!-- <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
