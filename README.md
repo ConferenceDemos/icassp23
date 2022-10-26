@@ -110,7 +110,25 @@ we have a video clip V of an object breaking for movie production, but the natur
     </tbody>
 </table>
 
-### Results Using Different Length Audio
+
+
+### Detailed Model Structure and Configuration
+
+#### Self-Gated Acoustic Unit
+
+#### Model Configuration
+
+### Detailed Experimental Result
+
+#### MOS Design
+
+#### MOS Results
+
+#### Cosine Similarity
+
+#### Ablation Results
+
+#### Results Using Different Length Audio
 
 (Take Dogs For Example)
 
@@ -154,7 +172,6 @@ we have a video clip V of an object breaking for movie production, but the natur
         </tr>
     </tbody>
 </table>
-
 
 ----
 
