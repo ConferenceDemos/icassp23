@@ -225,10 +225,9 @@ Theoretically, the length of the video features and reference audio input during
 ### Self-Gated Acoustic Unit
 
 ----
-
-<div  align="center">    
+ 
 <img src="demo/imgs/sgau.png" width = 30% height = 30% alt="sgru" align=center />
-</div>
+
 <!-- ![Self-Gated Acoustic Unit](demo/imgs/sgau.png){:height="50%" width="50%"} -->
 <!-- <embed src="https://drive.google.com/viewerng/
 viewer?embedded=true&url=http://example.com/the.pdf](https://github.com/ConferenceDemos/icassp23/blob/main/demo/imgs/SGAU.pdf)" width="500" height="375">
