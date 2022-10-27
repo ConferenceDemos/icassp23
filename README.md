@@ -16,7 +16,7 @@
 
 This is an Demopage and Appendix of the paper submmited to ICASSP2023 _'VarietySound: Timbre-Controllable Video to Sound Generation via Unsupervised Information Disentanglement'_, which gives the demo video of proposed model and supplies some content not included in the paper (e.g. Detailed explanation of experimental results and so on).
 
-## Context
+## Index
 
 ----
 
