@@ -33,6 +33,7 @@ This is an Demopage and Appendix of the paper submmited to ICASSP2023 _'VarietyS
 
 ## Abstract
 <a name="Abstract"></a>
+
 ----
 
 Video to sound generation aims to generate realistic and natural sound given a video input.
@@ -53,6 +54,7 @@ Our experimental results on the VAS dataset demonstrate that our method can gene
 
 ## Task Introduce
 <a name="Task Introduce"></a>
+
 ----
 
 The current video-to-sound generation works share a common problem: all of their acoustic information comes from the model’s prediction and cannot control the timbre of the generated audio. To match this problem, we defined a task called Timbre Controllable Video to Sound Generation (TCVSG), whose target is to allow users to generate realistic sound effects with their desired timbre for silent videos.
@@ -65,6 +67,7 @@ we have a video clip V of an object breaking for movie production, but the natur
 
 ## Demo Videos
 <a name="Demo Videos"></a>
+
 ----
 
 <table>
@@ -154,6 +157,7 @@ we have a video clip V of an object breaking for movie production, but the natur
 
 ## Method Detail
 <a name="Method Detail"></a>
+
 ----
 
 Our method is a process of information disentanglement and re-fusion.
@@ -213,6 +217,7 @@ Theoretically, the length of the video features and reference audio input during
 
 
 ## Model Structure and Configuration
+<a name="Model Structure and Configuration"></a>
 
 ----
 
@@ -221,8 +226,10 @@ Theoretically, the length of the video features and reference audio input during
 
 ----
 
-![Self-Gated Acoustic Unit](demo/imgs/sgau.png){:height="50%" width="50%"}
-
+<div  align="center">    
+<img src="demo/imgs/sgau.png" width = 30% height = 30% alt="sgru" align=center />
+</div>
+<!-- ![Self-Gated Acoustic Unit](demo/imgs/sgau.png){:height="50%" width="50%"} -->
 <!-- <embed src="https://drive.google.com/viewerng/
 viewer?embedded=true&url=http://example.com/the.pdf](https://github.com/ConferenceDemos/icassp23/blob/main/demo/imgs/SGAU.pdf)" width="500" height="375">
 <embed src="http://example.com/the.pdf" width="500" height="375" 
@@ -247,6 +254,7 @@ where $\mathbf{x_{i}}$ and $\mathbf{c_{i}}$ denote two inputs of the unit, $\mat
 $\boldsymbol{W\_{\cdot}}\* $ and $\boldsymbol{V\_{\cdot}}\* $ denote the single layer convolution in skip or output gate and the 2-layer convolutions in input gate separately.
 
 ### Model Configuration
+
 
 ----
 
@@ -403,6 +411,7 @@ We list hyperparameters and configurations of all models used in our experiments
 
 ## Detailed Experimental Result
 <a name="Detailed Experimental Result"></a>
+
 ----
 
 
