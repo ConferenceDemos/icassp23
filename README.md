@@ -639,10 +639,10 @@ For the ablation experiments, we only consider the reconstruction quality of the
     <td class="tg-nrix">Cough</td>
     <td class="tg-nrix">$4.32 (\pm 0.11)$</td>
     <td class="tg-nrix">$3.30 (\pm 0.20)$</td>
-    <td class="tg-nrix">$4.13(\pm 0.12)$</span></td>
-    <td class="tg-nrix">$4.30(\pm 0.11)$</span></td>
-    <td class="tg-nrix">$3.71(\pm 0.24)$</span></td>
-    <td class="tg-nrix">$4.17(\pm 0.12)$</span></td>
+    <td class="tg-nrix">$4.13(\pm 0.12)$</td>
+    <td class="tg-nrix">$4.30(\pm 0.11)$</td>
+    <td class="tg-nrix">$3.71(\pm 0.24)$</td>
+    <td class="tg-nrix">$4.17(\pm 0.12)$</td>
     <td class="tg-nrix">-</td>
     <td class="tg-nrix">$3.48 (\pm 0.22)$</td>
     <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$3.59 (\pm 0.09)$</span></td>
@@ -721,12 +721,12 @@ For the ablation experiments, we only consider the reconstruction quality of the
   </tr>
   <tr>
     <td class="tg-wa1i">Average</td>
-    <td class="tg-nrix">$4.42(\pm 0.04)$</td>
+    <td class="tg-nrix">$4.42 (\pm 0.04)$</td>
     <td class="tg-nrix">$2.99 (\pm 0.08)$</td>
-    <td class="tg-nrix">$4.04(\pm 0.05)$</td>
-    <td class="tg-nrix">$4.41(\pm 0.03)$</td>
+    <td class="tg-nrix">$4.04 (\pm 0.05)$</td>
+    <td class="tg-nrix">$4.41 (\pm 0.03)$</td>
     <td class="tg-nrix">$3.90 (\pm 0.07)$</td>
-    <td class="tg-nrix">$4.23(\pm 0.04)$</td>
+    <td class="tg-nrix">$4.23 (\pm 0.04)$</td>
     <td class="tg-baqh">-</td>
     <td class="tg-nrix">$3.57 (\pm 0.07)$</td>
     <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$3.89 (\pm 0.03)$</span></td>
@@ -797,7 +797,7 @@ For the ablation experiments, we only consider the reconstruction quality of the
   <tr>
     <td class="tg-nrix">Sneeze</td>
     <td class="tg-nrix">$0.88 (\pm 0.01)$</td>
-    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">0.98 $(\pm 0.01)$</span></td>
+    <td class="tg-nrix"><span style="font-weight:400;font-style:normal">$0.98 (\pm 0.01)$</span></td>
   </tr>
   <tr>
     <td class="tg-nrix">Average</td>
