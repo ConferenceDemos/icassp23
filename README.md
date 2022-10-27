@@ -219,6 +219,9 @@ Theoretically, the length of the video features and reference audio input during
 
 ----
 
+<embed src="https://drive.google.com/viewerng/
+viewer?embedded=true&url=http://example.com/the.pdf](https://github.com/ConferenceDemos/icassp23/blob/main/demo/imgs/SGAU.pdf)" width="500" height="375">
+
 
 Each SGAU has two inputs and two outputs, which we call feature inputs, feature outputs, conditional inputs, and conditional outputs, respectively.
 The feature input receives the input vectors and passes through two layers of 1D convolutional layers, which we call the input gate, and then normalized by Instance Normalization.
