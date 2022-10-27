@@ -18,7 +18,7 @@
 
 ----
 
-[Abstract](##Abstract)
+[Abstract](Abstract)
 
 [Task Introduce](#Task Introduce)
 
@@ -219,8 +219,12 @@ Theoretically, the length of the video features and reference audio input during
 
 ----
 
-<embed src="https://drive.google.com/viewerng/
+![Self-Gated Acoustic Unit](demo/imgs/sgau.png)
+
+<!-- <embed src="https://drive.google.com/viewerng/
 viewer?embedded=true&url=http://example.com/the.pdf](https://github.com/ConferenceDemos/icassp23/blob/main/demo/imgs/SGAU.pdf)" width="500" height="375">
+<embed src="http://example.com/the.pdf" width="500" height="375" 
+ type="application/pdf"> -->
 
 
 Each SGAU has two inputs and two outputs, which we call feature inputs, feature outputs, conditional inputs, and conditional outputs, respectively.
@@ -946,7 +950,7 @@ This is reasonable because there is a trade-off between audio reconstruction qua
 Specifically, the three parts of information are all necessary for the reconstruction of the target mel-spectrogram, and it will gain a larger distance between the generated result and the target audio when we discard one of the information, even if the information may conduct a negative impact on the quality of our generated results (e.g., the background noise).
 Meanwhile, the above results can also corroborate the effectiveness of the background encoder in our model.
 The results also show that timbre information has a more significant impact on the quality of the reconstructed audio than temporal information on average.
-
+![ablation](demo/imgs/abl.png)
 The generated result of our model acquires the minimum MCD score, which has successfully demonstrated the effectiveness of the encoders of our model.
 To better illustrate the above experimental results, we compare the reconstructed mel-spectrogram when one information component is removed or added (by setting the input vector to Gaussian noise or zero), and visualize the mel-spectrogram reconstruction results as shown in Figure above.
 As can be observed, when the temporal information is removed, the output mel-spectrogram becomes meaningless content that is uniformly distributed over the time series, and when the timbre information is removed, the output becomes a random timbre without specific spectral characteristics.
